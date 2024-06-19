@@ -3,7 +3,7 @@
 
 
 ## Alunos:
-- [Rafael Faria Franco](https://github.com/RafaelFFranco) 🧑‍💻
+- [Rafael Franco](https://github.com/RafaelFFranco) 🧑‍💻
 - [Vitor Veiga Silva](https://github.com/vitorveigas) 🧑‍💻
 
 ## 📄 Descrição do Projeto:

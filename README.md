@@ -7,7 +7,7 @@ Trabalho válido para as matérias de Algoritimos e Estrutura de Dados 1 e Funda
 - [Vitor Veiga Silva](https://github.com/vitorveigas)
 
 ## Descrição do Projeto:
-O trabalho tem o objetivo de construir um programa em C que gerencie as tarefas de um hotel. O programa deverá gerenciar :
+O trabalho tem o objetivo de construir um programa em C que gerencie as tarefas de um hotel. O programa deverá conter as seguintes funções de gerenciamento :
 - Clientes:
   Deverão serem cadastrados com nome, endereço, telefone e um código de identificação.
 - Funcionários:

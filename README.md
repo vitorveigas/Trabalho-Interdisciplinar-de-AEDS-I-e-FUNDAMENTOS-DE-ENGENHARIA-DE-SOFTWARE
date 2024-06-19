@@ -5,5 +5,13 @@
 - Vitor Veiga
 
 ## Descrição do Projeto
-Este projeto interdisciplinar combina os conhecimentos de Algoritmos e Estruturas de Dados I (AEDS I) com os Fundamentos de Engenharia de Software.
-
+O trabalho tem o objetivo de construir um programa em C que gerencie as tarefas de um hotel. O programa deverá gerenciar :
+- Clientes:
+  Deverão serem cadastrados com nome, endereço, telefone e um código de identificação.
+- Funcionários:
+  Deverão serem cadastrados com nome, endereço, telefone, cargo no hotel e um código de identificação.
+- Estadia:
+  As estadias precisam serem cadastradas com código da estadia, data de entrada, data de saída, quantidade de diárias, código do
+cliente, número do quarto.
+- Quartos
+  Os quartos precisam serem cadastrados com número do quarto, quantidade de hospedes, valor diária, status.

@@ -3,8 +3,8 @@ Trabalho válido para as matérias de Algoritimos e Estrutura de Dados 1 e Funda
 
 
 ## Alunos:
-- Rafael Faria
-- Vitor Veiga
+- [Rafael Faria Franco](https://github.com/RafaelFFranco)
+- [Vitor Veiga Silva](https://github.com/vitorveigas)
 
 ## Descrição do Projeto:
 O trabalho tem o objetivo de construir um programa em C que gerencie as tarefas de um hotel. O programa deverá gerenciar :
@@ -21,4 +21,4 @@ cliente, número do quarto.
 ## Tecnologias ultilizadas:
 
 - Linguagem de Programação: C
-- Ferramentas utilizada no desenvolvimento do trabalho: 
+- Ferramentas utilizada no desenvolvimento do trabalho: GitHub

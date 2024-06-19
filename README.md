@@ -1,7 +1,9 @@
-# Trabalho-Interdisciplinar-de-AEDS-I-e-FUNDAMENTOS-DE-ENGENHARIA-DE-SOFTWARE
-# Alunos:
-<li>
-  <ul>Rafael Faria</ul>
-  <ul>Vitor Veiga</ul>
-</li>
-# Descrição do Projeto:
+# Trabalho Interdisciplinar de AEDS I e Fundamentos de Engenharia de Software
+
+## Alunos
+- Rafael Faria
+- Vitor Veiga
+
+## Descrição do Projeto
+Este projeto interdisciplinar combina os conhecimentos de Algoritmos e Estruturas de Dados I (AEDS I) com os Fundamentos de Engenharia de Software.
+

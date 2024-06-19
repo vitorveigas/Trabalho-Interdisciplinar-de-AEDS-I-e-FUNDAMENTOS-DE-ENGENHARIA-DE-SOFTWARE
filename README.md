@@ -18,7 +18,7 @@ cliente, número do quarto.
 - Quartos
   Os quartos precisam serem cadastrados com número do quarto, quantidade de hospedes, valor diária, status.
 
-  ## Tecnologias ultilizadas:
+## Tecnologias ultilizadas:
 
-  - Linguagem de Programação: *C*
-  - Ferramentas utilizada no desenvolvimento do trabalho: 
+- Linguagem de Programação: C
+- Ferramentas utilizada no desenvolvimento do trabalho: 

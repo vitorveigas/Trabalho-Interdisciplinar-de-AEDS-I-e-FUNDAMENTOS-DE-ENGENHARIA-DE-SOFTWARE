@@ -1,5 +1,5 @@
 # 🌐 Trabalho Interdisciplinar de AEDS I e Fundamentos de Engenharia de Software 🌐
-📚 Trabalho válido para as matérias de Algoritimos e Estrutura de Dados 1 e Fundamentos de Engenharia de software. Trabalho feito no 1° período da faculdade de Engeharia de Software
+📚 Trabalho válido para as matérias de Algoritimos e Estrutura de Dados 1 e Fundamentos de Engenharia de software. Trabalho feito no 1° período do curso de Engeharia de Software na Puc Minas
 
 
 ## Alunos:

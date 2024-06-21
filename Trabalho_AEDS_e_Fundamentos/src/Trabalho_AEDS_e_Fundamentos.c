@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
+
 
 struct Cliente {
     int id;
@@ -193,6 +195,24 @@ void listarClientes(struct Cliente clientes[], int contadorClientes) {
     }
 }
 
+void pesquisarClientes(struct Cliente clientes[], int contadorClientes){
+    char nome[50];
+    printf("Pesquisar cliente pelo nome \n");
+    printf("Nome do cliente: \n");
+    scanf(" %[^\n]s", nome);
+    for (int i = 0; i < contadorClientes; i++) {
+        if (strcmp(clientes[i].nome, nome) == 0) { // strcmp compara o nome do cliente e pesquisa o nome do cliente no array e compara se os caracteres são iguais do nome são iguais aos caracteres do array
+            printf("Cliente encontrado:\n");
+            printf("ID: %d\n", clientes[i].id);
+            printf("Nome: %s\n", clientes[i].nome);
+            printf("Endereço: %s\n", clientes[i].endereco);
+            printf("Telefone: %d\n\n", clientes[i].telefone);
+            
+            return;
+        }
+    }
+}
+
 int main(void) {
     srand(time(NULL)); // Inicializar semente para geração de números aleatórios
 
@@ -231,7 +251,7 @@ int main(void) {
                 // Implementar baixa em estadia
                 break;
             case 5:
-                // Implementar pesquisa de cliente
+                pesquisarClientes(clientes, contadorClientes);
                 break;
             case 6:
                 // Implementar estadias do cliente

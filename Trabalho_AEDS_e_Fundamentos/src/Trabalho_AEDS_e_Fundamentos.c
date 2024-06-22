@@ -3,7 +3,6 @@
 #include <string.h>
 #include <time.h>
 
-
 struct Cliente {
     int id;
     char nome[50];
@@ -26,13 +25,6 @@ struct Estadia {
     int diarias;        // quantidade de diárias
     int idCliente;
     int numeroQuarto;
-};
-
-struct Quarto {
-    int numeroQuarto;
-    int quantidadeHospedes;
-    int valorDiaria;
-    int status;
 };
 
 // Função para gerar um ID único para cada cliente
@@ -122,6 +114,17 @@ void cadastroCliente(struct Cliente clientes[], int *contadorClientes, int numMa
         scanf(" %d", &clientes[i].telefone);
 
         (*contadorClientes)++; // Incrementa o contador de clientes
+
+        // Salvar clientes em arquivo após cada cadastro
+        FILE *arquivo;
+        arquivo = fopen("clientes.txt", "a");
+
+        if (arquivo != NULL) {
+            fprintf(arquivo, "%d;%s;%s;%d\n", clientes[i].id, clientes[i].nome, clientes[i].endereco, clientes[i].telefone);
+            fclose(arquivo);
+        } else {
+            printf("Erro ao salvar cliente no arquivo.\n");
+        }
     } else {
         printf("Limite máximo de clientes atingido.\n");
     }
@@ -151,6 +154,18 @@ void cadastroFuncionario(struct Funcionario funcionarios[], int *contadorFuncion
         scanf(" %f", &funcionarios[i].salario);
 
         (*contadorFuncionarios)++; // Incrementa o contador de funcionários
+
+        // Salvar funcionários em arquivo após cada cadastro
+        FILE *arquivo;
+        arquivo = fopen("funcionarios.txt", "a");
+
+        if (arquivo != NULL) {
+            fprintf(arquivo, "%d;%s;%d;%s;%.2f\n", funcionarios[i].id, funcionarios[i].nome, funcionarios[i].telefone,
+                    funcionarios[i].cargo, funcionarios[i].salario);
+            fclose(arquivo);
+        } else {
+            printf("Erro ao salvar funcionário no arquivo.\n");
+        }
     } else {
         printf("Limite máximo de funcionários atingido.\n");
     }
@@ -177,7 +192,19 @@ void cadastroEstadia(struct Estadia estadias[], int *contadorEstadias, int numMa
         printf("Insira o número do quarto: ");
         scanf("%d", &estadias[i].numeroQuarto);
 
-        (*contadorEstadias)++;
+        (*contadorEstadias)++; // Incrementa o contador de estadias
+
+        // Salvar estadias em arquivo após cada cadastro
+        FILE *arquivo;
+        arquivo = fopen("estadias.txt", "a");
+
+        if (arquivo != NULL) {
+            fprintf(arquivo, "%d;%d;%d;%d;%d;%d\n", estadias[i].id, estadias[i].dataEntrada, estadias[i].dataSaida,
+                    estadias[i].diarias, estadias[i].idCliente, estadias[i].numeroQuarto);
+            fclose(arquivo);
+        } else {
+            printf("Erro ao salvar estadia no arquivo.\n");
+        }
     } else {
         printf("Limite máximo de estadias atingido.\n");
     }
@@ -195,22 +222,26 @@ void listarClientes(struct Cliente clientes[], int contadorClientes) {
     }
 }
 
-void pesquisarClientes(struct Cliente clientes[], int contadorClientes){
+// Função para pesquisar cliente pelo nome
+void pesquisarClientes(struct Cliente clientes[], int contadorClientes) {
     char nome[50];
-    printf("Pesquisar cliente pelo nome \n");
-    printf("Nome do cliente: \n");
-    scanf(" %[^\n]s", nome);
+    printf("Pesquisar cliente pelo nome:\n");
+    printf("Nome do cliente: ");
+    fflush(stdout);
+    scanf(" %[^\n]", nome);
+
     for (int i = 0; i < contadorClientes; i++) {
-        if (strcmp(clientes[i].nome, nome) == 0) { // strcmp compara o nome do cliente e pesquisa o nome do cliente no array e compara se os caracteres são iguais do nome são iguais aos caracteres do array
+        if (strcmp(clientes[i].nome, nome) == 0) {
             printf("Cliente encontrado:\n");
             printf("ID: %d\n", clientes[i].id);
             printf("Nome: %s\n", clientes[i].nome);
             printf("Endereço: %s\n", clientes[i].endereco);
             printf("Telefone: %d\n\n", clientes[i].telefone);
-            
             return;
         }
     }
+
+    printf("Cliente não encontrado.\n");
 }
 
 int main(void) {
@@ -222,17 +253,56 @@ int main(void) {
     int contadorEstadias = 0; // contador de estadias cadastradas
     struct Cliente clientes[100]; // array de struct Clientes;
     struct Funcionario funcionarios[100]; // array de struct Funcionarios;
-    struct Quarto quartos[100];
-    struct Estadia estadias[100];
+    struct Estadia estadias[100]; // array de struct Estadias;
 
+    // Carregar dados salvos (se existirem)
+    FILE *arquivo;
+    arquivo = fopen("clientes.txt", "r");
+
+    if (arquivo != NULL) {
+        while (fscanf(arquivo, "%d;%[^;];%[^;];%d\n", &clientes[contadorClientes].id, clientes[contadorClientes].nome,
+                      clientes[contadorClientes].endereco, &clientes[contadorClientes].telefone) == 4) {
+            contadorClientes++;
+        }
+        fclose(arquivo);
+    } else {
+        printf("Arquivo de clientes não encontrado ou não pode ser aberto.\n");
+    }
+
+    arquivo = fopen("funcionarios.txt", "r");
+
+    if (arquivo != NULL) {
+        while (fscanf(arquivo, "%d;%[^;];%d;%[^;];%f\n", &funcionarios[contadorFuncionarios].id, funcionarios[contadorFuncionarios].nome,
+                      &funcionarios[contadorFuncionarios].telefone, funcionarios[contadorFuncionarios].cargo, &funcionarios[contadorFuncionarios].salario) == 5) {
+            contadorFuncionarios++;
+        }
+        fclose(arquivo);
+    } else {
+        printf("Arquivo de funcionários não encontrado ou não pode ser aberto.\n");
+    }
+
+    arquivo = fopen("estadias.txt", "r");
+
+    if (arquivo != NULL) {
+        while (fscanf(arquivo, "%d;%d;%d;%d;%d;%d\n", &estadias[contadorEstadias].id, &estadias[contadorEstadias].dataEntrada,
+                      &estadias[contadorEstadias].dataSaida, &estadias[contadorEstadias].diarias, &estadias[contadorEstadias].idCliente,
+                      &estadias[contadorEstadias].numeroQuarto) == 6) {
+            contadorEstadias++;
+        }
+        fclose(arquivo);
+    } else {
+        printf("Arquivo de estadias não encontrado ou não pode ser aberto.\n");
+    }
+
+    // Loop principal
     do {
         printf("\nO que você deseja fazer?\n\n");
         printf("1-Cadastrar cliente\n");
         printf("2-Cadastrar funcionário\n");
         printf("3-Cadastrar estadia\n");
         printf("4-Dar baixa em uma estadia\n");
-        printf("5-Pesquisar cliente info\n");
-        printf("6-Estadias cliente\n");
+        printf("5-Pesquisar cliente pelo nome\n");
+        printf("6-Estadias de um cliente\n");
         printf("7-Listar clientes\n");
         printf("0-Sair\n\n");
         scanf("%d", &escolha);

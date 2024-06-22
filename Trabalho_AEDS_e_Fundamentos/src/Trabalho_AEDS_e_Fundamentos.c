@@ -244,6 +244,29 @@ void pesquisarClientes(struct Cliente clientes[], int contadorClientes) {
     printf("Cliente não encontrado.\n");
 }
 
+//Função para pesquisar quarto pelo número do quarto cadastrado pelo cliente
+void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
+    int numeroQuarto;
+    printf("Pesquisar estadia pelo quarto: \n");
+    printf("Numero do Quarto: ");
+    fflush(stdout);
+    scanf("%d", &numeroQuarto);  // Puxa o numero do quarto na memoria
+    
+    for (int i = 0; i < contadorEstadias; i++) {
+        if (estadias[i].numeroQuarto == numeroQuarto) {  // Compara se o número do quarto é igual ao número digitado em pesquisar estadia
+            printf("Estadia encontrada: \n");
+            printf("Numero do quarto do cliente: %d\n", estadias[i].numeroQuarto);
+            printf("ID do cliente: %d\n", estadias[i].idCliente);
+            printf("Data de entrada: %d\n", estadias[i].dataEntrada);
+            printf("Data de saida: %d\n", estadias[i].dataSaida);
+            printf("Número de diarias: %d\n", estadias[i].diarias);  
+            return;
+        }
+    }
+    
+    printf("Estadia não encontrada.\n");
+}
+
 int main(void) {
     srand(time(NULL)); // Inicializar semente para geração de números aleatórios
 
@@ -324,7 +347,7 @@ int main(void) {
                 pesquisarClientes(clientes, contadorClientes);
                 break;
             case 6:
-                // Implementar estadias do cliente
+                pesquisarEstadia(estadias, contadorEstadias);
                 break;
             case 7:
                 listarClientes(clientes, contadorClientes);

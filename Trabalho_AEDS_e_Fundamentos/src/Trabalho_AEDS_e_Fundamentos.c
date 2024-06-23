@@ -267,6 +267,25 @@ void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
     printf("Estadia não encontrada.\n");
 }
 
+void darBaixaEstadia(struct Estadia estadias[], int *contadorEstadias) {
+    int numeroQuarto;
+    printf("Dar baixa na estadia pelo quarto: \n");
+    printf("Numero do Quarto: ");
+    fflush(stdout);
+    scanf("%d", &numeroQuarto);
+
+    for (int i = 0; i < *contadorEstadias; i++) {
+        if (estadias[i].numeroQuarto == numeroQuarto) {
+            // Estadia encontrada, fazer a remoção
+            for (int j = i; j < *contadorEstadias - 1; j++) {
+                estadias[j] = estadias[j + 1];  // Deslocar as estadias para a esquerda
+            }
+            (*contadorEstadias)--;  // Decrementar o contador de estadias
+            printf("Estadia do quarto %d foi removida.\n", numeroQuarto);
+        }
+    }
+}
+
 int main(void) {
     srand(time(NULL)); // Inicializar semente para geração de números aleatórios
 
@@ -341,7 +360,7 @@ int main(void) {
                 cadastroEstadia(estadias, &contadorEstadias, 100);
                 break;
             case 4:
-                // Implementar baixa em estadia
+                darBaixaEstadia(estadias, &contadorEstadias);
                 break;
             case 5:
                 pesquisarClientes(clientes, contadorClientes);

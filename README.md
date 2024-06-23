@@ -21,4 +21,4 @@ cliente, número do quarto.
 ## 🛠️ Tecnologias ultilizadas:
 
 - Linguagem de Programação: C
-- Ferramentas utilizada no desenvolvimento do trabalho: GitHub e CodeBlocks
+- Ferramentas utilizada no desenvolvimento do trabalho: GitHub e Eclipse

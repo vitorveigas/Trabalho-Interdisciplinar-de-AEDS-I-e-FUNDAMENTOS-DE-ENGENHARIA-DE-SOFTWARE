@@ -25,6 +25,8 @@ struct Estadia {
     int diarias;        // quantidade de diárias
     int idCliente;
     int numeroQuarto;
+    int hospedes;
+    
 };
 
 // Função para gerar um ID único para cada cliente
@@ -112,6 +114,8 @@ void cadastroCliente(struct Cliente clientes[], int *contadorClientes, int numMa
         printf("Insira o telefone de contato: ");
         fflush(stdout); // Limpa o buffer de saída
         scanf(" %d", &clientes[i].telefone);
+        
+        printf("ID do cliente: %d\n", clientes[i].id);
 
         (*contadorClientes)++; // Incrementa o contador de clientes
 
@@ -191,6 +195,9 @@ void cadastroEstadia(struct Estadia estadias[], int *contadorEstadias, int numMa
 
         printf("Insira o número do quarto: ");
         scanf("%d", &estadias[i].numeroQuarto);
+        
+        printf("Insira o numéro de hospedes do quarto: ");
+        scanf("%d", &estadias[i].hospedes);
 
         (*contadorEstadias)++; // Incrementa o contador de estadias
 
@@ -260,6 +267,7 @@ void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
             printf("Data de entrada: %d\n", estadias[i].dataEntrada);
             printf("Data de saida: %d\n", estadias[i].dataSaida);
             printf("Número de diarias: %d\n", estadias[i].diarias);  
+            printf("Número de hóspedes: %d\n", estadias[i].hospedes);
             return;
         }
     }
@@ -269,6 +277,8 @@ void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
 
 void darBaixaEstadia(struct Estadia estadias[], int *contadorEstadias) {
     int numeroQuarto;
+    float preco;
+    int quartoEncontrado = 0;
     printf("Dar baixa na estadia pelo quarto: \n");
     printf("Numero do Quarto: ");
     fflush(stdout);
@@ -282,8 +292,13 @@ void darBaixaEstadia(struct Estadia estadias[], int *contadorEstadias) {
             }
             (*contadorEstadias)--;  // Decrementar o contador de estadias
             printf("Estadia do quarto %d foi removida.\n", numeroQuarto);
+            preco = 100.00 * estadias[i].hospedes * estadias[i].diarias;
+            printf("O preço total da estadia foi de: %.2f\n", preco);
+            quartoEncontrado = 1;
+            break;  // Sair do loop depois de remover a estadia
         }
     }
+    printf("Estadia não encontrada.\n");
 }
 
 int main(void) {
@@ -326,7 +341,7 @@ int main(void) {
     arquivo = fopen("estadias.txt", "r");
 
     if (arquivo != NULL) {
-        while (fscanf(arquivo, "%d;%d;%d;%d;%d;%d\n", &estadias[contadorEstadias].id, &estadias[contadorEstadias].dataEntrada,
+        while (fscanf(arquivo, "%d; %d; %d; %d;%d; %d\n", &estadias[contadorEstadias].id, &estadias[contadorEstadias].dataEntrada,
                       &estadias[contadorEstadias].dataSaida, &estadias[contadorEstadias].diarias, &estadias[contadorEstadias].idCliente,
                       &estadias[contadorEstadias].numeroQuarto) == 6) {
             contadorEstadias++;

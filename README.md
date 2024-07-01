@@ -22,3 +22,7 @@ cliente, número do quarto.
 
 - Linguagem de Programação: C
 - Ferramentas utilizada no desenvolvimento do trabalho: GitHub e Eclipse
+
+## 🎥 Vídeo e documentação do trabalho
+
+O video e a documentação do trabalho estão na pasta [Documentação Garantido](https://github.com/vitorveigas/Trabalho-Interdisciplinar-de-AEDS-I-e-FUNDAMENTOS-DE-ENGENHARIA-DE-SOFTWARE/tree/main/Documenta%C3%A7%C3%A3o%20Hotel%20Descanso%20Garantido)

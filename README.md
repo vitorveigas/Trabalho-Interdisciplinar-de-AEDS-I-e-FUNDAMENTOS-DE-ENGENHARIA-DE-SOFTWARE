@@ -21,7 +21,7 @@ cliente, número do quarto.
 ## 🛠️ Tecnologias ultilizadas:
 
 - Linguagem de Programação: C
-- Ferramentas utilizada no desenvolvimento do trabalho: GitHub e Eclipse
+- Ferramentas utilizada no desenvolvimento do trabalho: GitHub e [Online C Compiler GDB](https://www.onlinegdb.com/online_c_compiler)
 
 ## 🎥 Vídeo e documentação do trabalho
 

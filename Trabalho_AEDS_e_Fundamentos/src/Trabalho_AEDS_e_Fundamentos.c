@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 #include <time.h>
 
 struct Cliente {
@@ -26,7 +27,7 @@ struct Estadia {
     int idCliente;
     int numeroQuarto;
     int hospedes;
-    
+
 };
 
 // Função para gerar um ID único para cada cliente
@@ -114,7 +115,7 @@ void cadastroCliente(struct Cliente clientes[], int *contadorClientes, int numMa
         printf("Insira o telefone de contato: ");
         fflush(stdout); // Limpa o buffer de saída
         scanf(" %d", &clientes[i].telefone);
-        
+
         printf("ID do cliente: %d\n", clientes[i].id);
 
         (*contadorClientes)++; // Incrementa o contador de clientes
@@ -149,13 +150,19 @@ void cadastroFuncionario(struct Funcionario funcionarios[], int *contadorFuncion
         fflush(stdout); // Limpa o buffer de saída
         scanf(" %d", &funcionarios[i].telefone);
 
+        while (getchar() != '\n');
+
         printf("Insira o cargo do funcionário: ");
         fflush(stdout); // Limpa o buffer de saída
         scanf(" %[^\n]", funcionarios[i].cargo);
 
+        while (getchar() != '\n');
+
         printf("Insira o salário do funcionário: ");
         fflush(stdout); // Limpa o buffer de saída
         scanf(" %f", &funcionarios[i].salario);
+
+        printf("ID do funcionário: %d\n", funcionarios[i].id);
 
         (*contadorFuncionarios)++; // Incrementa o contador de funcionários
 
@@ -195,7 +202,7 @@ void cadastroEstadia(struct Estadia estadias[], int *contadorEstadias, int numMa
 
         printf("Insira o número do quarto: ");
         scanf("%d", &estadias[i].numeroQuarto);
-        
+
         printf("Insira o numéro de hospedes do quarto: ");
         scanf("%d", &estadias[i].hospedes);
 
@@ -258,7 +265,7 @@ void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
     printf("Numero do Quarto: ");
     fflush(stdout);
     scanf("%d", &numeroQuarto);  // Puxa o numero do quarto na memoria
-    
+
     for (int i = 0; i < contadorEstadias; i++) {
         if (estadias[i].numeroQuarto == numeroQuarto) {  // Compara se o número do quarto é igual ao número digitado em pesquisar estadia
             printf("Estadia encontrada: \n");
@@ -266,12 +273,12 @@ void pesquisarEstadia(struct Estadia estadias[], int contadorEstadias) {
             printf("ID do cliente: %d\n", estadias[i].idCliente);
             printf("Data de entrada: %d\n", estadias[i].dataEntrada);
             printf("Data de saida: %d\n", estadias[i].dataSaida);
-            printf("Número de diarias: %d\n", estadias[i].diarias);  
+            printf("Número de diarias: %d\n", estadias[i].diarias);
             printf("Número de hóspedes: %d\n", estadias[i].hospedes);
             return;
         }
     }
-    
+
     printf("Estadia não encontrada.\n");
 }
 
@@ -298,10 +305,11 @@ void darBaixaEstadia(struct Estadia estadias[], int *contadorEstadias) {
             break;  // Sair do loop depois de remover a estadia
         }
     }
-    printf("Estadia não encontrada.\n");
+    
 }
 
 int main(void) {
+    setlocale(LC_ALL, "");
     srand(time(NULL)); // Inicializar semente para geração de números aleatórios
 
     int escolha; // escolha da função pelo usuário;
